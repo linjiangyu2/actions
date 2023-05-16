@@ -36,3 +36,14 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - run: rm -f tianlin.repo
       #- run: sudo apt update && sudo apt install tree && find / -type d -iname "actions"
+      - name: config
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        run: |
+        git config user.email "<your_email>"
+        git config user.name "<your_username>"
+      - name: ADD Change
+        run: |
+        git add .
+        git commit -m 'none'
+        git push origin master
