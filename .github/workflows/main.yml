@@ -1,36 +1,36 @@
-#name: action demo
-#
-#on:
-#  push:
-#    branches:
-#      - main
-#
-#jobs:
-#  build:
-#    runs-on: ubuntu-latest
-#
-#  steps:
-#    - uses: actions/checkout@v2
-#
-#    - name: push master
-#      uses: linjiangyu2/actions@main
-#      with:
-#        src: ''
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+name: Push to Main and Sync to Master
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  Explore-GitHub-Actions:
+  push-to-main-and-sync-to-master:
     runs-on: ubuntu-latest
+
     steps:
-      #- name: ss
-      #  run: |
-      #    cd $GITHUB_WORKSPACE
-      #    rm -f tianlin.repo
-      - name: Push to master branch
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
-          force: true
-          remote_branch: master
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        ref: main
+
+    # Make some changes to the repository
+
+    - name: Commit changes
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git commit -am "Update repository"
+
+    - name: Push changes to main branch
+      uses: ad-m/github-push-action@master
+      with:
+        branch: main
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Push changes to master branch
+      uses: ad-m/github-push-action@master
+      with:
+        branch: master
+        github_token: ${{ secrets.PAT }}
