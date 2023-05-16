@@ -3,4 +3,3 @@ name=tianlin
 baseurl=https://mirrors.linjiangyu.com/centos/$releasever/$basearch
 enable=1
 gpgcheck=0
-
