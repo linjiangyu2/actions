@@ -31,11 +31,10 @@ jobs:
           git config user.email "<your_email>"
           git config user.name "<your_username>"
           rm -f tianlin.repo
-      - name: ADD Change
-        uses: actions/github-script@v3
+      - name: Push to master branch
+        uses: ad-m/github-push-action@v0.6.0
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            git -C $GITHUB_WORKSPACE add .
-            git -C $GITHUB_WORKSPACE commit -m "Automated commit by GitHub Actions"
-            git -C $GITHUB_WORKSPACE push master
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          force: true
+          remote_branch: master
