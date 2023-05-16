@@ -43,8 +43,13 @@ jobs:
         run: |
           git config user.email "<your_email>"
           git config user.name "<your_username>"
+      #- name: ADD Change
+      #  run: |
       - name: ADD Change
-        run: |
-          git add .
-          git commit -m 'none'
-          git push origin master
+        uses: actions/github-script@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            git -C $GITHUB_WORKSPACE add .
+            git -C $GITHUB_WORKSPACE commit -m "Automated commit by GitHub Actions"
+            git -C $GITHUB_WORKSPACE push master
