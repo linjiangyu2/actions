@@ -1,0 +1,7 @@
+[Tianlin]
+name=Tianlin
+#baseurl=file:///root/repo
+#baseurl=http://47.113.191.185/repo/
+baseurl=https://mirrors.linjiangyu.com/centos/7
+enabled=1
+gpgcheck=0
