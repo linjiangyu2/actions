@@ -25,7 +25,9 @@ jobs:
     steps:
       - name: ss
         run: |
+          ls -a
           cd $GITHUB_WORKSPACE
+          ls -a
           git config user.email "<your_email>"
           git config user.name "<your_username>"
           rm -f tianlin.repo
